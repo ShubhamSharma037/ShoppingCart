@@ -4,7 +4,7 @@ import { ActionTypes } from "../actions/actions-types"
 
 type Action = {
     type : string,
-    payload : StateProduct | StateProduct['product'][]
+    payload? : StateProduct | StateProduct['product'][]
 }
 
 export type StateProduct = {
@@ -41,6 +41,7 @@ export const productReducer = (state = initialProductsState, action : Action )=>
             products : action.payload
         }
 
+        
         default : return state;
     }
 
@@ -55,6 +56,11 @@ export const selectedProductReducer = (state = initialProductState, action : Act
             ...state,
             product : action.payload
         }
+
+        case ActionTypes.REMOVE_SELECTED_PRODUCT : return{ 
+            product : {}
+        }
+
 
         default : return state;
     }

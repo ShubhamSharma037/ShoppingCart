@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom'
-import { selectedProduct } from "../redux/actions/actions";
+import { removeSelectedProduct, selectedProduct } from "../redux/actions/actions";
 import { AppState } from "../redux/reducers";
 import { StateProduct } from "../redux/reducers/productReducer";
 
@@ -27,6 +27,9 @@ const ProductDetails : React.FC = () =>{
         else{
             console.log('Invalid Id!!!!!')
         }
+        return ()=>{
+          dispatch(removeSelectedProduct());
+        };
         
     },[productId])
 
